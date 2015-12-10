@@ -94,6 +94,13 @@ def dispGallows(GALLOWS, right, wrong, word):
 		if word[j] in right:
 			displayWord = displayWord[:j] + word[j] + displayWord[1+j:]
 		j = j+1
+	
+	l = 0
+	while(l < len(displayWord)):
+		print displayWord[l],
+		l = l+1 
+	print
+
 def getInput(guesses):
 	print('Input a single letter for your guess')
 	guess = raw_input()
