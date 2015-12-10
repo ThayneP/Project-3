@@ -84,7 +84,7 @@ def dispGallows(GALLOWS, right, wrong, word):
 	i = 0
 	while(i < len(wrong)):
 		print wrong[i],
-		i = i=1
+		i = i+1
 	print
 		
 	displayWord = "_"*len(word)
