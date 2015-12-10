@@ -102,13 +102,15 @@ def dispGallows(GALLOWS, right, wrong, word):
 	print
 
 def getInput(guesses):
-	print('Input a single letter for your guess')
-	guess = raw_input()
-	if len(guess) !=  1:
-		print('Input can only be a single letter')
-	elif guess in guesses:
-		print('You have already guessed that! Try something new.')
-	return guess
+	while True:
+		print('Input a single letter for your guess')
+		guess = raw_input()
+		if len(guess) !=  1:
+			print('Input can only be a single letter')
+		elif guess in guesses:
+			print('You have already guessed that! Try something new.')
+		else:
+			return guess
 
 print('Welcome to Hangman!')
 print
