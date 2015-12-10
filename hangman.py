@@ -104,6 +104,10 @@ def dispGallows(GALLOWS, right, wrong, word):
 def getInput(guesses):
 	print('Input a single letter for your guess')
 	guess = raw_input()
+	if len(guess) !=  1:
+		print('Input can only be a single letter')
+	elif guess in guesses:
+		print('You have already guessed that! Try something new.')
 	return guess
 
 print('Welcome to Hangman!')
@@ -113,6 +117,7 @@ print("To play input a single letter. You are allowed 5 wrong guesses.")
 wrong = ''
 right = ''
 word = randomPick(dictionary)
+GameOver = False
 
 k = 0
 while(k < 5):
@@ -123,6 +128,7 @@ while(k < 5):
 
 	if guess in word:
 		right = right + guess
+		
 		
 	else:
 		wrong = wrong + guess
