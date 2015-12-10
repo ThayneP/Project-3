@@ -74,7 +74,7 @@ def randomPick(list):
 	index = random.randint(0, len(list)-1)
 	return list[index]
 
-def dispGallows(GALLOWS, right, wrong, word)
+def dispGallows(GALLOWS, right, wrong, word):
 	print("Guess # ", len(wrong))
 	print(GALLOWS[len(wrong)])
 	print()
@@ -105,7 +105,6 @@ print("To play input a single letter. You are allowed 5 wrong guesses.")
 wrong = ''
 right = ''
 word = randomPick(dictionary)
-gameOver = False
 
 k = 0
 while(k < 5):
