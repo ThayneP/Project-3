@@ -75,31 +75,32 @@ def randomPick(list):
 	return list[index]
 
 def dispGallows(GALLOWS, right, wrong, word):
-	print("Guess # ", len(wrong))
+	print('Guess # '+str( len(wrong)))
 	print(GALLOWS[len(wrong)])
-	print()
+	print
 	
 	#Loop prints the wrong guesses
-	print("Incorrect guesses:", end='')
+	print 'Incorrect guesses:', 
 	i = 0
 	while(i < len(wrong)):
-		print(wrong[i], end=' ')
-		print()
+		print wrong[i],
+		i = i=1
+	print
 		
 	displayWord = "_"*len(word)
 	
 	j = 0
     	while(j < len(word)):
-		if word[j] in right
+		if word[j] in right:
 			displayWord = displayWord[:j] + word[j] + displayWord[1+j:]
-
+		j = j+1
 def getInput(guesses):
 	print('Input a single letter for your guess')
-	guess = input()
+	guess = raw_input()
 	return guess
 
-print("Welcome to Hangman!")
-print()
+print('Welcome to Hangman!')
+print
 print("To play input a single letter. You are allowed 5 wrong guesses.")
 
 wrong = ''
@@ -121,5 +122,5 @@ while(k < 5):
 		k = k+1
 		if len(wrong) == 5:
 			dispGallows(GALLOWS, right, wrong, word)
-			print("GAME OVER! Your word was: ", word)
+			print('GAME OVER! Your word was: '+  word)
 	
