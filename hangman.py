@@ -75,7 +75,7 @@ def randomPick(list):
 	return list[index]
 
 def dispGallows(GALLOWS, right, wrong, word):
-	print('Guess # '+str( len(wrong)))
+	print('Remaining Guesses: ' + str(5 - len(wrong)))
 	print(GALLOWS[len(wrong)])
 	print
 	
@@ -119,10 +119,10 @@ print("To play input a single letter. You are allowed 5 wrong guesses.")
 wrong = ''
 right = ''
 word = randomPick(dictionary)
-GameOver = False
+
 
 k = 0
-while(k < 5):
+while(k <= 5):
 	dispGallows(GALLOWS, right, wrong, word)
 	
 	#Gets input from the user	
@@ -130,12 +130,22 @@ while(k < 5):
 
 	if guess in word:
 		right = right + guess
-		
-		
+		complete = True
+		c = 0
+		while(c < len(word)):
+			if word[c] not in right:
+				complete = False
+				break
+			c = c+1
+		if complete is True:
+			print('Congragulations! You figured out the word!')		
+			print('Your word was: ' + word)
+			break
 	else:
 		wrong = wrong + guess
 		k = k+1
 		if len(wrong) == 5:
 			dispGallows(GALLOWS, right, wrong, word)
 			print('GAME OVER! Your word was: '+  word)
+			break
 	
