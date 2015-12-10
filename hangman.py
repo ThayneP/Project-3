@@ -2,70 +2,61 @@
 
 # Thayne Price - 12/8/2015 - Intro to Unix
 # This project makes use of GitHub as its version control.
-# In this project, I will implement the game hangman. Initially the user will be allowed to select 
-# the difficulty by typing in easy/medium/hard. Then the program will print out a empty gallows with # blanks displayed for the unknow letters of the word. For each mistake the gallows will be displayed# with an additional body part. The user will be given 5 mistakes before the hangman image is
-# completed and "Game Over: You word was ___________". The words to be guessed are selected at random
-# from an input file.
+# In this project, I will implement the game hangman. 
+# Then the program will print out a empty gallows with  blanks displayed for the unknow letters of   the word. For each mistake the gallows will be displayed with an additional body part. The         incorrect guesses are listed along with the correct guesses in the corresponding blanks. The user will be  given 6 mistakes before the hangman image is completed and "Game Over: You word was ___________". Otherwise if the game is succesfully finished the player is congratulated and shown the corect word. The words to be guessed are selected at random from the dictionary.
 
 import random
 
 GALLOWS = ['''
-
 +---+
 |   |
 |
 |
 |
 |
-=====''','''
-
+======''','''
 +---+
 |   |
 |   O
 |
 |
 |
-=====''','''
-
+======''','''
 +---+
 |   |
 |   O
 |   |
 |
 |
-=====''','''
-
+======''','''
 +---+
 |   |
 |   O
 |  /|
 |
 |
-=====''','''
-
+======''','''
 +---+
 |   |
 |   O
 |  /|\
 |
 |
-=====''','''
-
+======''','''
 +---+
 |   |
 |   O
 |  /|\
 |  /
 |
-=====''', '''
-
+======''', '''
 +---+
 |   |
 |   O
 |  /|\
 |  / \
 |
-=====''']
+======''']
 
 dictionary = 'unix computer programming mouse keyboard notebook coffee mug rocks elephant wallet knife map light monitor desk door laptop chair plastic metal steel evangelical constantinople jarassic incubate contain'.split()
 
@@ -75,7 +66,8 @@ def randomPick(list):
 	return list[index]
 
 def dispGallows(GALLOWS, right, wrong, word):
-	print('Remaining Guesses: ' + str(5 - len(wrong)))
+# This function displays the corresponding gallows image depending on the number of used guesses. 
+	print('Remaining Guesses: ' + str(6 - len(wrong)))
 	print(GALLOWS[len(wrong)])
 	print
 	
@@ -86,7 +78,8 @@ def dispGallows(GALLOWS, right, wrong, word):
 		print wrong[i],
 		i = i+1
 	print
-		
+	
+#The display word is filled in as correct guesses are entered	
 	displayWord = "_"*len(word)
 	
 	j = 0
@@ -94,7 +87,7 @@ def dispGallows(GALLOWS, right, wrong, word):
 		if word[j] in right:
 			displayWord = displayWord[:j] + word[j] + displayWord[1+j:]
 		j = j+1
-	
+#Outputs the display word to teh screen
 	l = 0
 	while(l < len(displayWord)):
 		print displayWord[l],
@@ -102,6 +95,7 @@ def dispGallows(GALLOWS, right, wrong, word):
 	print
 
 def getInput(guesses):
+# retrieves input and checks that the input is of the correct format. A single letter and that it has not been used before.
 	while True:
 		print('Input a single letter for your guess')
 		guess = raw_input()
@@ -122,7 +116,7 @@ word = randomPick(dictionary)
 
 
 k = 0
-while(k <= 5):
+while(k <= 6):
 	dispGallows(GALLOWS, right, wrong, word)
 	
 	#Gets input from the user	
@@ -144,7 +138,7 @@ while(k <= 5):
 	else:
 		wrong = wrong + guess
 		k = k+1
-		if len(wrong) == 5:
+		if len(wrong) == 6:
 			dispGallows(GALLOWS, right, wrong, word)
 			print('GAME OVER! Your word was: '+  word)
 			break
